@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dungeons and Dragons</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="images/dragon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    #game {
+      width: 80%;
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header {
+      grid-column: span 2;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #ec4f57;
+    }
+
+    header .tagline {
+      font-size: 1.2rem;
+      color: #555;
+    }
+
+    .panel {
+      background: rgba(240, 240, 240, 0.8);
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .panel h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #444;
+    }
+
+    .stat {
+      margin-bottom: 10px;
+      color: #222;
+      font-weight: bold;
+    }
+
+    .tagline{
+        color: #444;
+    }
+    .actionButton {
+      background: linear-gradient(184deg, #ff888e, #ec4f57);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-right: 10px;
+    }
+
+    .actionButton:hover {
+      background: #ec4f57;
+    }
+
+    #gameText {
+      grid-column: span 2;
+    }
+
+    footer {
+      grid-column: span 2;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    footer a {
+      color: #ec4f57;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* BGM Floating Widget */
+    #bgmWidget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #ec4f57;
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+
+    #bgmWidget:hover {
+      background: #ff888e;
+    }
+
+    #bgmWidget img {
+      width: 24px;
+      height: 24px;
+    }
+  </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+
+<body>
+  <div id="game">
+    <!-- Game Header -->
+    <header id="gameHeader">
+      <h1>Dungeons And Dragons</h1>
+      <p id="gameHeader">Defeat the dragon and save the kingdom!</p>
+    </header>
+
+    <!-- Player Stats -->
+    <section id="stats" class="panel">
+      <h2>Player Stats</h2>
+      <div class="stat">XP: <strong><span id="xpText" class="stat">0</span></strong></div>
+      <div class="stat">Health: <strong><span id="healthText" class="stat">100</span></strong></div>
+      <div class="stat">Gold: <strong><span id="goldText" class="stat">50</span></strong></div>
+    </section>
+
+    <!-- Controls -->
+    <section id="controls" class="panel">
+      <h2>Actions</h2>
+      <button id="button1" class="actionButton">Go to Store</button>
+      <button id="button2" class="actionButton">Go to Cave</button>
+      <button id="button3" class="actionButton">Fight Dragon</button>
+    </section>
+
+    <!-- Monster Stats -->
+    <section id="monsterStats" class="panel">
+      <h2>Monster Stats</h2>
+      <div class="stat">Monster Name: <strong><span id="monsterName" class="stat">-</span></strong></div>
+      <div class="stat">Health: <strong><span id="monsterHealth" class="stat">-</span></strong></div>
+    </section>
+
+    <!-- Game Text -->
+    <section id="gameText" class="panel">
+      <h2>Game Updates</h2>
+      
+      <p id="text">Welcome to Dungeons and Dragons. You must defeat the dragon that is preventing people from leaving the town. You are in the town square. Where do you want to go? Use the buttons above.</p>
+      <p id="t">Made with ❤️ by <a href="https://www.instagram.com/kalp.veer">Kalp</a></p>    
+    </section>
+  </div>
+
+ <!-- Background Music Widget -->
+<div id="bgmWidget" style="cursor: pointer;">
+    <i id="bgmIcon" class="fas fa-play"></i> <!-- Initial Play icon -->
+  </div>
+  
+  <!-- Volume Control -->
+  <div id="volumeControl">
+    <input id="volumeSlider" type="range" min="0" max="1" step="0.01" value="0.5" />
+  </div>
+  
+  <!-- Your audio element -->
+  <audio id="bgm" src="images/bgm.mp3" preload="auto"></audio>
+  
+  <script>
+    const bgmWidget = document.getElementById('bgmWidget');
+    const bgmIcon = document.getElementById('bgmIcon');
+    const bgm = document.getElementById('bgm');
+    const volumeSlider = document.getElementById('volumeSlider');
+  
+    // Play/Pause functionality
+    bgmWidget.addEventListener('click', () => {
+      if (bgm.paused) {
+        bgm.play().catch((error) => {
+          console.log('Error playing audio:', error);
+        });
+        bgmIcon.classList.remove('fa-play');
+        bgmIcon.classList.add('fa-pause');
+      } else {
+        bgm.pause();
+        bgmIcon.classList.remove('fa-pause');
+        bgmIcon.classList.add('fa-play');
+      }
+    });
+  
+    // Volume control functionality
+    volumeSlider.addEventListener('input', (event) => {
+      bgm.volume = event.target.value;
+    });
+  
+    // Set default volume
+    bgm.volume = volumeSlider.value;
+  </script>
+  
+  <!-- FontAwesome CDN for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  
+  
+<script src="random_bg_image.js"></script>
+
+  <script src="script.js"></script>
+ 
+</body>
+
+</html>

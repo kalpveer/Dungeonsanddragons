@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+}
+
+#game {
+  max-width: 500px;
+  background-color: rgba(0, 0, 0, 0.85);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  margin: 50px auto;
+  padding: 30px;
+  text-align: center;
+}
+
+header#gameHeader {
+  margin-bottom: 30px;
+}
+
+header#gameHeader h1 {
+  font-size: 2.8rem;
+  color: #ff4f4f;
+  margin: 0;
+}
+
+header#gameHeader .tagline {
+  font-size: 1rem;
+  font-style: italic;
+  color: #ddd;
+  margin-top: 5px;
+}
+
+.panel {
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  text-align: left;
+}
+
+.panel h2 {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.stat {
+  font-size: 1.1rem;
+  margin: 5px 0;
+  color: #ccc;
+}
+
+.stat strong {
+  color: #fff;
+}
+
+.actionButton {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #ff4f4f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.actionButton:hover {
+  background-color: #e63939;
+}
+
+#monsterStats {
+  display: none;
+  background-color: rgba(139, 0, 0, 0.9);
+  color: #fff;
+}
+
+#gameText {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+#text {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+footer {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+footer a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+
+/* Styling the volume control */
+#volumeControl {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  height: 120px; /* Adjust for desired cylinder height */
+  width: 60px; /* Cylinder width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ec4f57;
+  border-radius: 30px; /* Makes the container cylindrical */
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling the volume slider */
+#volumeSlider {
+  writing-mode: bt-lr; /* Sets the slider to vertical */
+  transform: rotate(270deg); /* Rotates slider */
+  -webkit-appearance: none;
+  width: 100px;
+  height: 8px;
+  background: #ff888e;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Custom thumb styling for WebKit browsers */
+#volumeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border: 2px solid #ec4f57;
+  border-radius: 50%;
+}
+
+/* Custom thumb styling for Mozilla browsers */
+#volumeSlider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: white;
+  border: 2px solid #ec4f57;
+  border-radius: 50%;
+}
+
